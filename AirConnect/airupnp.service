@@ -4,7 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/myapps/airupnp-arm -l 1000:2000 -Z -x /usr/myapps/airupnp.xml
+ExecStart=/usr/myapps/airupnp-arm -l 1000:2000 -Z -x /usr/myapps/airupnp.xml -o S12
 Restart=on-failure
 RestartSec=30
 
