@@ -8,6 +8,8 @@
 name: OpenWrt-CI
 
 on:
+  repository_dispatch:
+  workflow_dispatch:
 #  schedule:
 #    - cron: 0 20 * * *
   release:
@@ -46,15 +48,19 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-          cat $GITHUB_WORKSPACE/custom/extra_feeds >> ./feeds.conf.default
+          rm -f feeds.conf.default
+          wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/feeds.conf.default
+          wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/extra_feeds
+          cat extra_feeds >> feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          . $GITHUB_WORKSPACE/custom/patches.sh
-          
+
       - name: Generate configuration file
         run: |
-          cat $GITHUB_WORKSPACE/custom/r4s_load.seed > .config
+          wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/patches.sh
+          ./patches.sh
+          wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/def_config
+          cat def_config > .config
           make defconfig
 
       - name: Make download
