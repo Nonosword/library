@@ -21,4 +21,4 @@ echo -e "\toption maxfreq0 '1512000'\n" >> $config_file_cpufreq
 
 # luci-app-jd-dailybonus
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
-echo "CONFIG_PACKAGE_luci-app-jd-dailybonus=y">> .config
+echo "CONFIG_PACKAGE_luci-app-jd-dailybonus=y" >> .config
