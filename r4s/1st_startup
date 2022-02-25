@@ -4,14 +4,11 @@ sudo /etc/init.d/ssh restart
 sudo apt-get update
 sudo apt-get upgrade
 
-wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh /home/ubuntu
-chmod +x ./2th_startup.sh
-
 cat >2nd_screen.sh<<EOF
 screen_name1="buildr4s"
 
 cmd1="cd /home/ubuntu"
-cmd2="./2th_startup.sh"
+cmd2="./2nd_startup.sh"
 
 screen -dmS $screen_name1
 
@@ -20,6 +17,12 @@ screen -x -S $screen_name1 -p 0 -X stuff '\n'
 screen -x -S $screen_name1 -p 0 -X stuff "$cmd2"
 screen -x -S $screen_name1 -p 0 -X stuff '\n'
 EOF
+
+wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh /home/ubuntu
+chmod +x ./2nd_screen.sh
+chmod +x ./2th_startup.sh
+
+echo "@reboot bash /home/ubuntu/2nd_screen.sh" >> /etc/crontab
 
 # sudo apt update
 # sudo apt install libc6 debconf
