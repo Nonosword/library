@@ -1,4 +1,3 @@
-
 rm -f *.deb
 
 docker rmi `docker images -q`
