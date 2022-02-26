@@ -1,3 +1,9 @@
+sed -i "s|PasswordAuthentication yes|PasswordAuthentication no|g" /etc/ssh/sshd_config
+sudo /etc/init.d/ssh restart
+
+sudo apt-get update
+sudo apt-get upgrade
+
 rm -f *.deb
 
 docker rmi `docker images -q`
@@ -9,17 +15,14 @@ sudo -E apt-get -y autoremove --purge
 sudo -E apt-get clean
 df -h
 
-sudo apt-get update
-sudo apt-get upgrade
-
 echo "ubuntu ALL=(ALL:ALL) ALL">>/etc/sudoers
 echo "ubuntu ALL=(ALL) NOPASSWD:ALL">>/etc/sudoers
 su ubuntu
 cd ~
-
-git clone https://github.com/coolsnowwolf/lede /home/ubuntu/lede
-
 cd /home/ubuntu/lede
+
+git clone https://github.com/coolsnowwolf/lede
+
 wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/extra_feeds
 cat extra_feeds >> feeds.conf.default
 
