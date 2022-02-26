@@ -1,8 +1,8 @@
+# echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+# echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
+# sed -i "s|#AuthorizedKeysFile|AuthorizedKeysFile|g" /etc/ssh/sshd_config
 sed -i "s|PasswordAuthentication yes|PasswordAuthentication no|g" /etc/ssh/sshd_config
 sudo /etc/init.d/ssh restart
-
-sudo apt-get update
-sudo apt-get upgrade
 
 docker rmi `docker images -q`
 sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
@@ -18,16 +18,19 @@ sudo ufw allow 8080
 
 cat > 2nd_screen.sh << "EOF"
 screen_name1="buildr4s"
-cmd1="./2nd_startup.sh"
+cmd1="wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh -O 2nd_startup.sh"
+cmd2="chmod +x 2nd_startup.sh"
+cmd3="./2nd_startup.sh"
 screen -dmS $screen_name1
 screen -x -S $screen_name1 -p 0 -X stuff "$cmd1"
 screen -x -S $screen_name1 -p 0 -X stuff '\n'
+screen -x -S $screen_name1 -p 0 -X stuff "$cmd2"
+screen -x -S $screen_name1 -p 0 -X stuff '\n'
+screen -x -S $screen_name1 -p 0 -X stuff "$cmd3"
+screen -x -S $screen_name1 -p 0 -X stuff '\n'
 EOF
 
-wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh
 chmod +x 2nd_screen.sh
-chmod +x 2nd_startup.sh
-
 echo "@reboot root bash ./2nd_screen.sh" >> /etc/crontab
 
 # sudo apt install libc6 debconf
