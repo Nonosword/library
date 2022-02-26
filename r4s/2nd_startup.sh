@@ -1,10 +1,5 @@
 rm -f *.deb
 
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get -y autoremove --purge
-sudo apt-get clean
-
 echo "ubuntu ALL=(ALL:ALL) ALL">>/etc/sudoers
 echo "ubuntu ALL=(ALL) NOPASSWD:ALL">>/etc/sudoers
 su ubuntu
