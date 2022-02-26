@@ -2,9 +2,9 @@ rm -f *.deb
 
 echo "ubuntu ALL=(ALL:ALL) ALL">>/etc/sudoers
 echo "ubuntu ALL=(ALL) NOPASSWD:ALL">>/etc/sudoers
-su ubuntu
-cd ~
 
+su ubuntu <<EOF
+cd
 git clone https://github.com/coolsnowwolf/lede /home/ubuntu/lede
 
 cd /home/ubuntu/lede
@@ -25,5 +25,7 @@ cat def_config > .config
 
 # make -j8 download V=s
 # make -j1 V=s
+
+EOF
 
 # simplefileserver
