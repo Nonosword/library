@@ -4,35 +4,29 @@ sudo /etc/init.d/ssh restart
 sudo apt-get update
 sudo apt-get upgrade
 
-cat >2nd_screen.sh<<EOF
+cat > 2nd_screen.sh << "EOF"
 screen_name1="buildr4s"
-
-cmd1="cd /home/ubuntu"
-cmd2="./2nd_startup.sh"
-
+cmd1="./2nd_startup.sh"
 screen -dmS $screen_name1
-
 screen -x -S $screen_name1 -p 0 -X stuff "$cmd1"
-screen -x -S $screen_name1 -p 0 -X stuff '\n'
-screen -x -S $screen_name1 -p 0 -X stuff "$cmd2"
 screen -x -S $screen_name1 -p 0 -X stuff '\n'
 EOF
 
-wget -p /home/ubuntu https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh
+wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/2nd_startup.sh
 chmod +x 2nd_screen.sh
-chmod +x /home/ubuntu/2nd_startup.sh
+chmod +x 2nd_startup.sh
 
-echo "@reboot bash /home/ubuntu/2nd_screen.sh" >> /etc/crontab
+echo "@reboot root bash ./2nd_screen.sh" >> /etc/crontab
 
 # sudo apt install libc6 debconf
-wget http://mirrors.kernel.org/ubuntu/pool/main/o/openssl/libssl3_3.0.1-0ubuntu1_amd64.deb
-sudo dpkg -i libssl3_3.0.1-0ubuntu1_amd64.deb
-sudo apt -f install
+# wget http://mirrors.kernel.org/ubuntu/pool/main/o/openssl/libssl3_3.0.1-0ubuntu1_amd64.deb
+# sudo dpkg -i libssl3_3.0.1-0ubuntu1_amd64.deb
+# sudo apt -f install
 
-wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-headers-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
-wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-headers-5.15.25-051525_5.15.25-051525.202202231324_all.deb
-wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-image-unsigned-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
-wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-modules-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
-sudo dpkg -i *.deb
+# wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-headers-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
+# wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-headers-5.15.25-051525_5.15.25-051525.202202231324_all.deb
+# wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-image-unsigned-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
+# wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.15.25/amd64/linux-modules-5.15.25-051525-generic_5.15.25-051525.202202231324_amd64.deb
+# sudo dpkg -i *.deb
 
 reboot
