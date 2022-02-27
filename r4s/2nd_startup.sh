@@ -7,8 +7,6 @@ cat extra_feeds >> feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-# wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/def_config
-# cat def_config > .config
 wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/r4s_load.seed
 cat r4s_load.seed > .config
 wget https://raw.githubusercontent.com/Nonosword/library/main/r4s/patches.sh
