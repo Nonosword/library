@@ -4,12 +4,12 @@ sed -i 's/192.168.1.1/192.168.2.1/' package/base-files/files/bin/config_generate
 # sed -i 's/r8169/r8168/' target/linux/rockchip/image/armv8.mk
 
 # change the voltage value for over-clock stablization
-sed -i 's/1400000/1450000/' target/linux/rockchip/patches-5.10/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-config_file_cpufreq=`find package/ -follow -type f -path '*/luci-app-cpufreq/root/etc/config/cpufreq'`
-truncate -s-1 $config_file_cpufreq
-echo -e "\toption governor0 'schedutil'" >> $config_file_cpufreq
-echo -e "\toption minfreq0 '816000'" >> $config_file_cpufreq
-echo -e "\toption maxfreq0 '1512000'\n" >> $config_file_cpufreq
+# sed -i 's/1400000/1450000/' target/linux/rockchip/patches-5.10/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+# config_file_cpufreq=`find package/ -follow -type f -path '*/luci-app-cpufreq/root/etc/config/cpufreq'`
+# truncate -s-1 $config_file_cpufreq
+# echo -e "\toption governor0 'schedutil'" >> $config_file_cpufreq
+# echo -e "\toption minfreq0 '816000'" >> $config_file_cpufreq
+# echo -e "\toption maxfreq0 '1512000'\n" >> $config_file_cpufreq
 
 # git clean -f -d target/linux/rockchip
 # enable the gpu for device 'r2s'|'r2c'|'r4s'|'r1p'
