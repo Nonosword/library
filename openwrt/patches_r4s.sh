@@ -24,4 +24,5 @@ git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/l
 echo "CONFIG_PACKAGE_luci-app-jd-dailybonus=y" >> .config
 
 # fix adguardhome luci
-sed -i 's/AdGuardHome/adguardhome/' package/feeds/small/luci-app-adguardhome/Makefile
+sed -i 's/AdGuardHome/adguardhome/g' package/feeds/small8/luci-app-adguardhome/Makefile
+cat package/feeds/small8/luci-app-adguardhome/Makefile
