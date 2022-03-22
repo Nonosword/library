@@ -1,4 +1,4 @@
-sed -i 's/192.168.1.1/192.168.2.1/' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.99.1/' package/base-files/files/bin/config_generate
 
 # swap the network adapter driver to r8168 to gain better performance for r4s
 # sed -i 's/r8169/r8168/' target/linux/rockchip/image/armv8.mk
