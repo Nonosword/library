@@ -2,4 +2,69 @@ CONFIG_TARGET_x86=y
 CONFIG_TARGET_x86_64=y
 CONFIG_TARGET_x86_64_DEVICE_generic=y
 
+CONFIG_TARGET_ROOTFS_EXT4FS=n
+CONFIG_TARGET_ROOTFS_SQUASHFS=y
 CONFIG_TARGET_IMAGES_GZIP=y
+
+CONFIG_TARGET_ROOTFS_PARTSIZE=800
+
+# CONFIG_FEED_passwall=y
+# CONFIG_FEED_helloworld=y
+# CONFIG_FEED_small8=y
+# CONFIG_FEED_kenzo=y
+# CONFIG_FEED_small=y
+
+CONFIG_PACKAGE_kmod-usb3=y
+CONFIG_PACKAGE_kmod-mt76x2u=y
+# CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y
+
+CONFIG_PACKAGE_luci-theme-argonne=y
+CONFIG_PACKAGE_luci-app-argonne-config=y
+
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_adguardhome=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
+# CONFIG_PACKAGE_luci-app-ddnsto=y
+CONFIG_PACKAGE_iperf3=y
+CONFIG_PACKAGE_luci-app-usb-printer=y
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_sfdisk=y
+CONFIG_PACKAGE_resize2fs=y
+CONFIG_PACKAGE_sysfsutils=y
+# CONFIG_PACKAGE_luci-app-diag-core=y
+# CONFIG_PACKAGE_luci-app-mwan3=y
+# CONFIG_PACKAGE_luci-app-mwan3helper=y
+
+# CONFIG_PACKAGE_luci-app-samba36=n
+# CONFIG_PACKAGE_luci-app-samba4=y
+# CONFIG_PACKAGE_samba4-utils=y
+# CONFIG_PACKAGE_luci-app-transmission=y
+CONFIG_PACKAGE_luci-app-aria2=y
+# CONFIG_PACKAGE_luci-app-baidupcs-web=y
+
+CONFIG_PACKAGE_luci-app-serverchan=y
+# CONFIG_PACKAGE_luci-app-vnstat=y
+CONFIG_PACKAGE_luci-app-netdata=y
+CONFIG_PACKAGE_luci-app-statistics=y
+CONFIG_PACKAGE_collectd=y
+CONFIG_PACKAGE_collectd-mod-wireless=y
+CONFIG_PACKAGE_collectd-mod-ethstat=y
+CONFIG_PACKAGE_collectd-mod-thermal=y
+CONFIG_PACKAGE_collectd-mod-uptime=y
+CONFIG_PACKAGE_collectd-mod-disk=y
+
+# CONFIG_PACKAGE_luci-app-wireguard=y
+CONFIG_PACKAGE_luci-app-passwall=y
+# CONFIG_PACKAGE_luci-app-ssr-plus=y
+# CONFIG_PACKAGE_luci-app-vssr=y
+CONFIG_PACKAGE_xray-core=y
+CONFIG_PACKAGE_xray-geodata=y
+CONFIG_PACKAGE_xray-plugin=y
+
+CONFIG_PACKAGE_luci-app-vlmcsd=n
+CONFIG_PACKAGE_luci-app-xlnetacc=n
+
+# 1988 cache accelerator
+CONFIG_DEVEL=y
+CONFIG_CCACHE=y
