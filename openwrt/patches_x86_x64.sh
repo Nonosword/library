@@ -1,5 +1,5 @@
 sed -i 's/192.168.1.1/192.168.100.1/' package/base-files/files/bin/config_generate
-sed -i 's/Openwrt/Openwrt_r4s/' package/base-files/files/bin/config_generate
+sed -i 's/Openwrt/Openwrt_x64/' package/base-files/files/bin/config_generate
 
 # luci-app-jd-dailybonus
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
