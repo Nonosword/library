@@ -21,11 +21,12 @@ sed -i 's/Openwrt/Openwrt_r4s/' package/base-files/files/bin/config_generate
 # rm f341ef96fe4b509a728ba1281281da96bac23673.patch
 
 # luci-app-jd-dailybonus
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
-echo "CONFIG_PACKAGE_luci-app-jd-dailybonus=y" >> .config
+# git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
+# echo "CONFIG_PACKAGE_luci-app-jd-dailybonus=y" >> .config
 
 # fix small8 adguardhome luci
-rm -rf feeds/small8/adguardhome
-sed -i 's/AdGuardHome/adguardhome/g' feeds/small8/luci-app-adguardhome/Makefile
-sed -i 's/AdGuardHome/adguardhome/g' package/feeds/small8/luci-app-adguardhome/Makefile
+# rm -rf feeds/small8/adguardhome
+# sed -i 's/AdGuardHome/adguardhome/g' feeds/small8/luci-app-adguardhome/Makefile
+# sed -i 's/AdGuardHome/adguardhome/g' package/feeds/small8/luci-app-adguardhome/Makefile
+# sed -i 's/AdGuardHome/adguardhome/g' package/feeds/small8/luci-app-adguardhome/root/etc/config/AdGuardHome
 # cat feeds/small8/luci-app-adguardhome/Makefile
