@@ -1,16 +1,16 @@
 # Utility
-CONFIG_PACKAGE_ipv6helper=n
-CONFIG_PACKAGE_adguardhome=n
+CONFIG_PACKAGE_ipv6helper=y
+# CONFIG_PACKAGE_adguardhome=y
 CONFIG_PACKAGE_luci-app-adbyby-plus=n
-CONFIG_PACKAGE_luci-app-ddns=n
-CONFIG_PACKAGE_luci-app-uhttpd=n
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
 CONFIG_PACKAGE_iperf3=y
 CONFIG_PACKAGE_luci-app-diag-core=y
-CONFIG_PACKAGE_luci-app-usb-printer=n
-CONFIG_PACKAGE_luci-app-diskman=n
-# CONFIG_PACKAGE_sfdisk=y
-# CONFIG_PACKAGE_resize2fs=y
-# CONFIG_PACKAGE_sysfsutils=y
+# CONFIG_PACKAGE_luci-app-usb-printer=y
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_sfdisk=y
+CONFIG_PACKAGE_resize2fs=y
+CONFIG_PACKAGE_sysfsutils=y
 # CONFIG_PACKAGE_luci-app-mwan3=y
 # CONFIG_PACKAGE_luci-app-mwan3helper=y
 CONFIG_PACKAGE_luci-app-vlmcsd=n
