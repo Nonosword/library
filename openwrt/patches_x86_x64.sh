@@ -1,3 +1,4 @@
+sed -i 's|Devvvvvice|X64|' package/base-files/files/bin/config_generate
 
 # luci-app-jd-dailybonus
 # git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
