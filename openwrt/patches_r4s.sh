@@ -1,3 +1,4 @@
+sed -i 's|Devvvvvice|R4S|' package/base-files/files/bin/config_generate
 
 # change the voltage value for over-clock stablization
 config_file_cpufreq=`find package/ -follow -type f -path '*/luci-app-cpufreq/root/etc/config/cpufreq'`
