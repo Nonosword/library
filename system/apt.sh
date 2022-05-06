@@ -1,1 +1,1 @@
-apt-get install gnupg
+apt-get upgrade
