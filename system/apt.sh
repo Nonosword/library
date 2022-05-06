@@ -1,1 +1,1 @@
-apt-get upgrade
+apt-get remove gnupg
