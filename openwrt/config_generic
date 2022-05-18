@@ -17,6 +17,7 @@ CONFIG_PACKAGE_luci-app-ttyd=n
 CONFIG_PACKAGE_screen=y
 CONFIG_PACKAGE_rsync=y
 CONFIG_PACKAGE_pv=y
+CONFIG_PACKAGE_tree=y
 
 # Download
 CONFIG_PACKAGE_luci-app-aria2=y
