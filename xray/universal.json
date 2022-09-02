@@ -1,8 +1,8 @@
 {
   "log": {
-#    "access": "/var/log/xray/access.log",
-#    "error": "/var/log/xray/error.log",
-#    "dnsLog": false,
+//    "access": "/var/log/xray/access.log",
+//    "error": "/var/log/xray/error.log",
+//    "dnsLog": false,
     "loglevel": "warning"
   },
   "inbounds": [
@@ -15,6 +15,12 @@
             "id": "youruuuuuuuuuuuuuid",
             "level": 0,
             "email": "love@example.com",
+            "flow": "xtls-rprx-direct"
+          },
+          {
+            "id": "haproooooooooooxyid",
+            "level": 0,
+            "email": "haproxy@666.com",
             "flow": "xtls-rprx-direct"
           }
         ],
@@ -32,8 +38,9 @@
         "xtlsSettings": {
           "serverName": "yourservername",
           "allowInsecure": false,
-#          "alpn": ["h2", "http/1.1"],
-#          "fingerprint": "randomized",
+//          "alpn": ["http/1.1"],
+          "alpn": ["h2", "http/1.1"],
+          "fingerprint": "randomized",
           "certificates": [
             {
               "certificateFile": "/usr/local/nginx/conf/ssl/yourservername/fullchain.cer",
@@ -46,10 +53,10 @@
   ],
   "outbounds": [
     {
-#      "mux": {
-#        "enabled": false,
-#        "concurrency": 8
-#      },
+      "mux": {
+        "enabled": false,
+        "concurrency": 8
+      },
       "protocol": "freedom"
     }
   ]
