@@ -37,10 +37,10 @@
         "security": "xtls",
         "xtlsSettings": {
           "serverName": "yourservername",
-          "allowInsecure": false,
+//          "allowInsecure": false,
 //          "alpn": ["http/1.1"],
           "alpn": ["h2", "http/1.1"],
-          "fingerprint": "randomized",
+//          "fingerprint": "randomized",
           "certificates": [
             {
               "certificateFile": "/usr/local/nginx/conf/ssl/yourservername/fullchain.cer",
@@ -49,14 +49,23 @@
           ]
         }
       }
+//    },
+//    {
+//      "port": 2021,
+//      "protocol": "shadowsocks",
+//      "settings": {
+//        "method": "2022-blake3-aes-128-gcm",
+//        "password": "****************",
+//        "network": "tcp,udp"
+//      }
     }
   ],
   "outbounds": [
     {
-      "mux": {
-        "enabled": false,
-        "concurrency": 8
-      },
+//      "mux": {
+//        "enabled": false,
+//        "concurrency": 8
+//      },
       "protocol": "freedom"
     }
   ]
