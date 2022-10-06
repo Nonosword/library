@@ -8,6 +8,6 @@ sudo sysctl net.ipv4.tcp_available_congestion_control
 sudo sysctl -n net.ipv4.tcp_congestion_control
 lsmod | grep bbr
 
-sed -e '/bbr-part2/d' /var/spool/cron/root
+sed -i '/bbr-part2/d' /var/spool/cron/root
 service crond restart
 reboot
