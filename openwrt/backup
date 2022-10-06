@@ -45,9 +45,16 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
 
   build_packages:
+  
+    permissions:
+      contents: write # for release creation
+    
     name: Build ${{ github.event.inputs.device }}_${{ github.event.inputs.kernal }}
     runs-on: ubuntu-latest
     env:
