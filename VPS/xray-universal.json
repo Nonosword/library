@@ -57,7 +57,7 @@
             "settings": {
                 "clients": [
                     {
-                        "password": "passsssssssword",
+                        "password": "passsssssssssword",
                         "level": 0,
                         "email": "trojan@user.io"
                     }
