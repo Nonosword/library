@@ -39,8 +39,8 @@
                     "serverName": "yourservername",
                     "fingerprint": "randomized",
 //                    "allowInsecure": false,
-//                    "alpn": ["http/1.1"],
-                    "alpn": ["h2", "http/1.1"],
+                    "alpn": ["http/1.1"],
+//                    "alpn": ["h2", "http/1.1"],
                     "certificates": [
                         {
                             "certificateFile": "/usr/local/nginx/conf/ssl/yourservername/fullchain.cer",
