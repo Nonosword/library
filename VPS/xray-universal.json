@@ -19,9 +19,9 @@
                     },
                     {
                         "id": "haproooooooooooxyid",
-                        "flow": "xtls-rprx-direct"
+                        "flow": "xtls-rprx-direct",
                         "level": 0,
-                        "email": "haproxy@openwrt.io",
+                        "email": "haproxy@openwrt.io"
                     }
                 ],
                 "decryption": "none",
