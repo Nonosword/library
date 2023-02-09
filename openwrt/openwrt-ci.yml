@@ -42,8 +42,6 @@ on:
         description: 'select openwrt branch'
         default: 'master'
         required: false
-  release:
-    types: [published]
 
 permissions:
   contents: read
@@ -51,9 +49,6 @@ permissions:
 jobs:
 
   build_packages:
-  
-    permissions:
-      contents: write # for release creation
     
     name: Build ${{ github.event.inputs.device }}_${{ github.event.inputs.kernal }}
     runs-on: ubuntu-latest
@@ -62,43 +57,25 @@ jobs:
       KERNAL: ${{ github.event.inputs.kernal }}
       BRANCH: ${{ github.event.inputs.branch }}
 
-    if: github.event.repository.owner.id == github.event.sender.id
-
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: master
-          fetch-depth: 0
-
-      - name: cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-
-      - name: Space cleanup
+      - name: Space cleanup and Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
           docker rmi `docker images -q`
-          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
-          sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-          sudo -E apt-get update
-          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5
-          sudo -E apt-get -y autoremove --purge
-          sudo -E apt-get clean
-
-          # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
-          # ln -s /mnt/openwrt/bin ./bin
-          # mkdir -p ./build_dir
-          # ln -s -f /mnt/openwrt/build_dir/host ./build_dir/host
-          # ln -s -f /mnt/openwrt/build_dir/hostpkg ./build_dir/hostpkg
-          # ln -s /mnt/openwrt/dl ./dl
-          # ln -s /mnt/openwrt/feeds ./feeds
-          # ln -s /mnt/openwrt/staging_dir ./staging_dir
-
-          df -h
+          sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
+          sudo -E apt update
+          sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* moby* snap*
+          sudo -E apt -y full-upgrade
+          sudo -E apt -y install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo -E systemctl daemon-reload
+          sudo -E apt -y autoremove --purge
+          sudo -E apt clean
+          sudo -E timedatectl set-timezone "Asia/Shanghai"
+          
+      - name: Checkout OpenWrt
+        uses: actions/checkout@v3
 
       - name: Update feeds
         run: |
@@ -160,11 +137,8 @@ jobs:
             cat .config
             make defconfig
 
-      - name: Make download
-        run: |
-          make download -j8 || make download -j1 V=s
-          rm -rf $(find ./dl/ -size -1024c)
-          df -h
+      - name: Download packages
+        run: make download -j16
 
       - name: Compile firmware
         run: |
@@ -174,19 +148,18 @@ jobs:
           echo "======================="
           df -h
           echo "======================="
-          du -h ./ --max-depth=1
-          du -h /mnt/openwrt/ --max-depth=1 || true
+          du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
+          du -h --max-depth=1 ./build_dir
+          du -h --max-depth=1 ./bin
 
       - name: Prepare artifact
         run: |
-          mkdir -p ./artifact/firmware
           mkdir -p ./artifact/package
           mkdir -p ./artifact/buildinfo
           rm -rf $(find ./bin/targets/ -type d -name "packages")
-          cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
           cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
-    
+          
       - name: Get current date
         id: date
         run: echo "::set-output name=today::$(date +'%Y%m%d')"
@@ -197,29 +170,21 @@ jobs:
           grep 'CONFIG_LINUX_' .config
           echo "::set-output name=version::$(grep 'CONFIG_LINUX_' .config | cut -d'_' -f 3,4 | cut -d'=' -f 1)"
           
-      - name: Deliver buildinfo
-        uses: actions/upload-artifact@v2
+      - name: Upload buildinfo
+        uses: actions/upload-artifact@v3
         with:
           name: Buildinfo_${{ github.event.inputs.device }}_${{ github.event.inputs.workchain }}_${{ steps.kernel.outputs.version }}_${{ steps.date.outputs.today }}
           path: ./artifact/buildinfo/
 
-      - name: Deliver package
-        uses: actions/upload-artifact@v2
+      - name: Upload package
+        uses: actions/upload-artifact@v3
         with:
           name: Package_${{ github.event.inputs.device }}_${{ github.event.inputs.workchain }}_${{ steps.kernel.outputs.version }}_${{ steps.date.outputs.today }}
           path: ./artifact/package/
 
-      - name: Deliver firmware
-        uses: actions/upload-artifact@v2
+      - name: Upload firmware
+        uses: actions/upload-artifact@v3
         with:
           name: Firmware_${{ github.event.inputs.device }}_${{ github.event.inputs.workchain }}_${{ steps.kernel.outputs.version }}_${{ steps.date.outputs.today }}
           path: ./bin/targets/
-  
-      - name: Upload release asset
-        if: github.event == 'release'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.YOURTOKEN }}
-          file: ./artifact/firmware/*
-          tag: ${{ github.ref }}
-          file_glob: true
+ 
