@@ -1,0 +1,71 @@
+{
+    "log": {
+//        "access": "/var/log/xray/access.log",
+//        "error": "/var/log/xray/error.log",
+//        "dnsLog": false,
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "youruuuuuuuuuuuuuid",
+                        "flow": "xtls-rprx-vision",
+                        "level": 0,
+                        "email": "main@user.io"
+                    },
+                    {
+                        "id": "haproooooooooooxyid",
+                        "flow": "xtls-rprx-vision",
+                        "level": 0,
+                        "email": "haproxy@openwrt.io"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "yourservername",
+                    "fingerprint": "randomized",
+//                    "allowInsecure": false,
+                    "alpn": ["http/1.1"],
+//                    "alpn": ["h2", "http/1.1"],
+                    "certificates": [
+                        {
+                            "certificateFile": "/usr/local/nginx/conf/ssl/yourservername/fullchain.cer",
+                            "keyFile": "/usr/local/nginx/conf/ssl/yourservername/yourservername.key"
+                        }
+                    ]
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}
