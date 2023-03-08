@@ -75,16 +75,16 @@ CONFIG_NUT_DRIVER_USB=y
 CONFIG_NUT_DRIVER_SERIAL=y
 CONFIG_NUT_DRIVER_NEON=y
 CONFIG_PACKAGE_nut-common=y
-CONFIG_PACKAGE_nut-driver-apcsmart=y
-CONFIG_PACKAGE_nut-driver-apcsmart-old=y
+# CONFIG_PACKAGE_nut-driver-apcsmart=y
+# CONFIG_PACKAGE_nut-driver-apcsmart-old=y
 CONFIG_PACKAGE_nut-driver-apcupsd-ups=y
 CONFIG_PACKAGE_nut-server=y
 CONFIG_PACKAGE_nut-upsc=y
-CONFIG_PACKAGE_nut-upscmd=y
+# CONFIG_PACKAGE_nut-upscmd=y
 CONFIG_PACKAGE_nut-upslog=y
 CONFIG_PACKAGE_nut-upsmon=y
 CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
-CONFIG_PACKAGE_nut-upsrw=y
+# CONFIG_PACKAGE_nut-upsrw=y
 CONFIG_PACKAGE_nut-web-cgi=y
 
 # 1988 cache accelerator
