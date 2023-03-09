@@ -71,13 +71,13 @@ CONFIG_PACKAGE_luci-app-diag-core=y
 # Network UPS Tools
 CONFIG_PACKAGE_nut=y
 CONFIG_PACKAGE_nut-common=y
-CONFIG_PACKAGE_nut-driver-usbhid-ups=y
-CONFIG_PACKAGE_nut-server=y
+# CONFIG_PACKAGE_nut-server=y
+# CONFIG_PACKAGE_nut-driver-usbhid-ups=y
 CONFIG_PACKAGE_nut-upsc=y
-CONFIG_PACKAGE_nut-upslog=y
 CONFIG_PACKAGE_nut-upsmon=y
-CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
-CONFIG_PACKAGE_nut-web-cgi=y
+# CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
+# CONFIG_PACKAGE_nut-upslog=y
+# CONFIG_PACKAGE_nut-web-cgi=y
 # CONFIG_PACKAGE_nut-upsrw=y
 # CONFIG_PACKAGE_nut-upscmd=y
 
