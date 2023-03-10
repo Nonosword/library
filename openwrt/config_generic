@@ -22,7 +22,7 @@ CONFIG_PACKAGE_tree=y
 # Share, Download
 CONFIG_PACKAGE_luci-app-aria2=y
 CONFIG_PACKAGE_luci-app-samba=y
-CONFIG_PACKAGE_autosamba=y
+# CONFIG_PACKAGE_autosamba=y
 CONFIG_DEFAULT_automount=y
 CONFIG_PACKAGE_luci-app-xlnetacc=n
 CONFIG_PACKAGE_luci-app-unblockmusic=y
