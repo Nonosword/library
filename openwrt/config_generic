@@ -1,6 +1,6 @@
 # Utility
 CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_adguardhome=n
+# CONFIG_PACKAGE_adguardhome=y
 CONFIG_PACKAGE_luci-app-adbyby-plus=n
 CONFIG_PACKAGE_luci-app-ddns=y
 CONFIG_PACKAGE_luci-app-uhttpd=y
@@ -18,18 +18,17 @@ CONFIG_PACKAGE_screen=y
 CONFIG_PACKAGE_rsync=y
 CONFIG_PACKAGE_pv=y
 CONFIG_PACKAGE_tree=y
-
-# Share&Download
+# Download
 CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_luci-app-samba=y
-CONFIG_PACKAGE_autosamba=y
-CONFIG_DEFAULT_automount=y
+# CONFIG_PACKAGE_luci-app-samba36=n
+# CONFIG_PACKAGE_luci-app-samba4=y
+# CONFIG_PACKAGE_samba4-utils=y
+# CONFIG_PACKAGE_luci-app-transmission=y
+# CONFIG_PACKAGE_luci-app-baidupcs-web=y
 CONFIG_PACKAGE_luci-app-xlnetacc=n
-CONFIG_PACKAGE_luci-app-unblockmusic=y
-
+# CONFIG_PACKAGE_luci-app-unblockmusic=y
 # VPN
 CONFIG_PACKAGE_luci-app-passwall=y
-CONFIG_PACKAGE_chinadns-ng=y
 CONFIG_PACKAGE_xray-core=y
 CONFIG_PACKAGE_xray-geodata=y
 CONFIG_PACKAGE_xray-plugin=y
@@ -38,21 +37,18 @@ CONFIG_PACKAGE_luci-app-ipsec-vpnd=n
 CONFIG_PACKAGE_luci-app-wireguard=n
 CONFIG_PACKAGE_strongswan=n
 CONFIG_PACKAGE_luci-app-zerotier=n
-
 # Drivers
 CONFIG_DRIVER_11AC_SUPPORT=y
 CONFIG_DRIVER_11N_SUPPORT=y
 CONFIG_DRIVER_11W_SUPPORT=y
 CONFIG_PACKAGE_kmod-usb3=y
-# CONFIG_PACKAGE_kmod-mt76x2u=y
+CONFIG_PACKAGE_kmod-mt76x2u=y
 # CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
 # CONFIG_PACKAGE_kmod-usb-net-rtl8152-vendor=y
 # CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y
-
 # Theme
 CONFIG_PACKAGE_luci-theme-argonne=y
 CONFIG_PACKAGE_luci-app-argonne-config=y
-
 # Statistics
 CONFIG_PACKAGE_luci-app-serverchan=y
 CONFIG_PACKAGE_luci-app-netdata=y
@@ -67,19 +63,23 @@ CONFIG_PACKAGE_snort3=y
 CONFIG_PACKAGE_bmon=y
 CONFIG_PACKAGE_iperf3=y
 CONFIG_PACKAGE_luci-app-diag-core=y
-
 # Network UPS Tools
 CONFIG_PACKAGE_nut=y
+CONFIG_NUT_DRIVER_USB=y
+CONFIG_NUT_DRIVER_SERIAL=y
+CONFIG_NUT_DRIVER_NEON=y
 CONFIG_PACKAGE_nut-common=y
+CONFIG_PACKAGE_nut-driver-apcsmart=y
+CONFIG_PACKAGE_nut-driver-apcsmart-old=y
+CONFIG_PACKAGE_nut-driver-apcupsd-ups=y
 CONFIG_PACKAGE_nut-server=y
-CONFIG_PACKAGE_nut-driver-usbhid-ups=y
 CONFIG_PACKAGE_nut-upsc=y
+CONFIG_PACKAGE_nut-upscmd=y
+CONFIG_PACKAGE_nut-upslog=y
 CONFIG_PACKAGE_nut-upsmon=y
-# CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
-# CONFIG_PACKAGE_nut-web-cgi=y
-# CONFIG_PACKAGE_nut-upslog=y
-# CONFIG_PACKAGE_nut-upsrw=y
-# CONFIG_PACKAGE_nut-upscmd=y
+CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
+CONFIG_PACKAGE_nut-upsrw=y
+CONFIG_PACKAGE_nut-web-cgi=y
 
 # 1988 cache accelerator
 CONFIG_DEVEL=y
