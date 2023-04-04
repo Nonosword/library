@@ -64,8 +64,49 @@
             "tag": "direct"
         },
         {
+            "protocol": "wireguard",
+            "settings": {
+                "secretKey": "yoursecretKeeeeeeeeeeeey",
+                "address": ["172.16.0.2/32", "youraddreeeeeeeeess"],
+                "peers": [
+                    {
+                        "publicKey": "yourpublicKeeeeeeeeeey",
+                        "endpoint": "engage.cloudflareclient.com:2408"
+                    }
+                ]
+            },
+            "tag": "WARP"
+        },
+        {
             "protocol": "blackhole",
             "tag": "block"
         }
-    ]
+    ],
+    "routing":{
+        "domainStrategy":"IPIfNonMatch",
+        "rules":[
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:cn"
+                ],
+                "outboundTag": "WARP"
+            },
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:cn"
+                ],
+                "outboundTag": "WARP"
+            },
+            {
+                "type":"field",
+                "domain":[
+                    "domain:openai.com",
+                    "domain:ai.com"
+                ],
+                "outboundTag":"WARP"
+            }
+        ]
+    }
 }
