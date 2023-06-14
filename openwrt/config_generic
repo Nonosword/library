@@ -48,6 +48,7 @@ CONFIG_DRIVER_11N_SUPPORT=y
 CONFIG_DRIVER_11W_SUPPORT=y
 CONFIG_PACKAGE_kmod-usb3=y
 CONFIG_PACKAGE_kmod-mt76x2u=y
+CONFIG_PACKAGE_hostapd=y
 # CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
 # CONFIG_PACKAGE_kmod-usb-net-rtl8152-vendor=y
 # CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y
