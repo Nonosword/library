@@ -1,4 +1,5 @@
 # Utility
+CONFIG_PACKAGE_miniupnpd=y
 CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_adguardhome=n
 CONFIG_PACKAGE_luci-app-adbyby-plus=n
