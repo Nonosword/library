@@ -33,6 +33,7 @@ CONFIG_PACKAGE_luci-app-unblockmusic=y
 
 # VPN
 CONFIG_PACKAGE_luci-app-passwall=y
+CONFIG_PACKAGE_luci-app-passwall2=y
 # CONFIG_PACKAGE_chinadns-ng=y
 CONFIG_PACKAGE_xray-core=y
 CONFIG_PACKAGE_xray-geodata=y
