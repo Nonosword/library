@@ -1,5 +1,5 @@
 src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2
-src-git passwall-packages https://github.com/xiaorouji/openwrt-passwall-packages
+src-git passwallpackages https://github.com/xiaorouji/openwrt-passwall-packages
 # src-git helloworld https://github.com/fw876/helloworld
 # src-git small8 https://github.com/kenzok8/small-package
 # src-git kenzo https://github.com/kenzok8/openwrt-packages
