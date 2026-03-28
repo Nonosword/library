@@ -1,95 +1,151 @@
+# official-custom.seed
+
+# ------------------------------------------------
+# Build helper
+# ------------------------------------------------
+CONFIG_DEVEL=y
+CONFIG_CCACHE=y
+
+# ------------------------------------------------
+# LuCI / base
+# ------------------------------------------------
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
+CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_luci-app-wol=y
+CONFIG_PACKAGE_luci-proto-ipv6=y
+
+# i18n
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-wol-zh-cn=y
+
+# ------------------------------------------------
+# Theme
+# ------------------------------------------------
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-argon-config=y
+
+# ------------------------------------------------
+# Message push
+# ------------------------------------------------
+CONFIG_PACKAGE_luci-app-wechatpush=y
+CONFIG_PACKAGE_luci-i18n-wechatpush-zh-cn=y
+CONFIG_PACKAGE_iputils-arping=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_jq=y
+CONFIG_PACKAGE_bash=y
+
+# i18n
+CONFIG_PACKAGE_luci-i18n-wechatpush-zh-cn=y
+
+# ------------------------------------------------
 # Utility
+# ------------------------------------------------
 CONFIG_PACKAGE_miniupnpd=y
 CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_adguardhome=n
-CONFIG_PACKAGE_luci-app-adbyby-plus=n
-CONFIG_PACKAGE_luci-app-ddns=y
-CONFIG_PACKAGE_luci-app-uhttpd=y
-# CONFIG_PACKAGE_luci-app-usb-printer=y
+CONFIG_PACKAGE_luci-app-cpufreq=y
 CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_sfdisk=y
 CONFIG_PACKAGE_resize2fs=y
 CONFIG_PACKAGE_sysfsutils=y
 CONFIG_PACKAGE_luci-app-hd-idle=y
-# CONFIG_PACKAGE_luci-app-mwan3=y
-# CONFIG_PACKAGE_luci-app-mwan3helper=y
-CONFIG_PACKAGE_luci-app-vlmcsd=n
-CONFIG_PACKAGE_luci-app-ttyd=n
 CONFIG_PACKAGE_screen=y
 CONFIG_PACKAGE_rsync=y
 CONFIG_PACKAGE_pv=y
 CONFIG_PACKAGE_tree=y
 
-# Share, Download
+# i18n
+CONFIG_PACKAGE_luci-i18n-cpufreq-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
+
+# ------------------------------------------------
+# Share / Download
+# ------------------------------------------------
 CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_luci-app-samba=y
-# CONFIG_PACKAGE_autosamba=y
+CONFIG_PACKAGE_luci-app-samba4=y
 CONFIG_DEFAULT_automount=y
 CONFIG_PACKAGE_kmod-fs-cifs=y
 CONFIG_PACKAGE_cifsmount=y
 CONFIG_PACKAGE_kmod-nls-utf8=y
-CONFIG_PACKAGE_luci-app-xlnetacc=n
 CONFIG_PACKAGE_luci-app-unblockmusic=y
 
-# VPN
-CONFIG_PACKAGE_luci-app-passwall=n
+# i18n
+CONFIG_PACKAGE_luci-i18n-aria2-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
+
+# ------------------------------------------------
+# VPN / Proxy
+# ------------------------------------------------
 CONFIG_PACKAGE_luci-app-passwall2=y
-# CONFIG_PACKAGE_chinadns-ng=y
+CONFIG_PACKAGE_luci-app-passwall2_Nftables_Transparent_Proxy=y
 CONFIG_PACKAGE_xray-core=y
 CONFIG_PACKAGE_xray-geodata=y
 CONFIG_PACKAGE_xray-plugin=y
-CONFIG_PACKAGE_luci-app-ssr-plus=n
-CONFIG_PACKAGE_luci-app-ipsec-vpnd=n
-CONFIG_PACKAGE_luci-app-wireguard=n
-CONFIG_PACKAGE_strongswan=n
-CONFIG_PACKAGE_luci-app-zerotier=n
 
-# Drivers
-CONFIG_DRIVER_11AC_SUPPORT=y
-CONFIG_DRIVER_11N_SUPPORT=y
-CONFIG_DRIVER_11W_SUPPORT=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin=y
+
+# i18n
+CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
+
+# ------------------------------------------------
+# Wireless / Driver
+# ------------------------------------------------
+CONFIG_PACKAGE_kmod-usb2=y
+CONFIG_PACKAGE_kmod-usb2-pci=y
 CONFIG_PACKAGE_kmod-usb3=y
+CONFIG_PACKAGE_kmod-usb-xhci-hcd=y
+
+CONFIG_PACKAGE_kmod-cfg80211=y
+CONFIG_PACKAGE_kmod-mac80211=y
+CONFIG_PACKAGE_kmod-mt76-core=y
+CONFIG_PACKAGE_kmod-mt76-usb=y
+CONFIG_PACKAGE_kmod-mt76x02-common=y
+CONFIG_PACKAGE_kmod-mt76x02-usb=y
+CONFIG_PACKAGE_kmod-mt76x2-common=y
 CONFIG_PACKAGE_kmod-mt76x2u=y
+
 CONFIG_PACKAGE_hostapd=y
-# CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
-# CONFIG_PACKAGE_kmod-usb-net-rtl8152-vendor=y
-# CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=y
 
-# Theme
-CONFIG_PACKAGE_luci-theme-argon=n
-CONFIG_PACKAGE_luci-app-argon-config=n
-CONFIG_PACKAGE_luci-app-argone=y
-CONFIG_PACKAGE_luci-theme-argone=y
-CONFIG_PACKAGE_luci-app-argone-config=y
-
-# Statistics
-CONFIG_PACKAGE_luci-app-serverchan=y
-CONFIG_PACKAGE_luci-app-netdata=y
+# ------------------------------------------------
+# Statistics / Monitor
+# ------------------------------------------------
 CONFIG_PACKAGE_luci-app-statistics=y
+CONFIG_PACKAGE_luci-app-netdata=y
+CONFIG_PACKAGE_nlbwmon=y
+CONFIG_PACKAGE_luci-app-nlbwmon=y
 CONFIG_PACKAGE_collectd=y
 CONFIG_PACKAGE_collectd-mod-wireless=y
 CONFIG_PACKAGE_collectd-mod-ethstat=y
 CONFIG_PACKAGE_collectd-mod-thermal=y
 CONFIG_PACKAGE_collectd-mod-uptime=y
 CONFIG_PACKAGE_collectd-mod-disk=y
-# CONFIG_PACKAGE_snort3=y
 CONFIG_PACKAGE_bmon=y
 CONFIG_PACKAGE_iperf3=y
 CONFIG_PACKAGE_luci-app-diag-core=y
 
-# Network UPS Tools
+# i18n
+CONFIG_PACKAGE_luci-i18n-statistics-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-nlbwmon-zh-cn=y
+
+# ------------------------------------------------
+# UPS
+# ------------------------------------------------
 CONFIG_PACKAGE_nut=y
 CONFIG_PACKAGE_nut-common=y
 CONFIG_PACKAGE_nut-server=y
 CONFIG_PACKAGE_nut-driver-usbhid-ups=y
 CONFIG_PACKAGE_nut-upsc=y
 CONFIG_PACKAGE_nut-upsmon=y
-# CONFIG_PACKAGE_nut-upsmon-sendmail-notify=y
-# CONFIG_PACKAGE_nut-web-cgi=y
-# CONFIG_PACKAGE_nut-upslog=y
-# CONFIG_PACKAGE_nut-upsrw=y
-# CONFIG_PACKAGE_nut-upscmd=y
-
-# 1988 cache accelerator
-CONFIG_DEVEL=y
-CONFIG_CCACHE=y
