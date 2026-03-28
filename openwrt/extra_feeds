@@ -5,9 +5,5 @@ src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-p
 # src-git kenzo https://github.com/kenzok8/openwrt-packages
 # src-git small https://github.com/kenzok8/small
 
-# Argon
-src-git argon https://github.com/jerrykuku/luci-theme-argon.git
-src-git argon_config https://github.com/jerrykuku/luci-app-argon-config.git
-
-# ServerChan
-src-git wechatpush https://github.com/tty228/luci-app-wechatpush.git
+# Argon ServerChan
+src-git small_feeds https://github.com/Nonosword/small_feeds
