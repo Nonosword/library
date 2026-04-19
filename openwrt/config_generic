@@ -7,6 +7,11 @@ CONFIG_DEVEL=y
 CONFIG_CCACHE=y
 
 # ------------------------------------------------
+# i18n
+# ------------------------------------------------
+CONFIG_LUCI_LANG_zh_Hans=y
+
+# ------------------------------------------------
 # LuCI / base
 # ------------------------------------------------
 CONFIG_PACKAGE_luci=y
@@ -16,16 +21,6 @@ CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-ddns=y
 CONFIG_PACKAGE_luci-app-wol=y
 CONFIG_PACKAGE_luci-proto-ipv6=y
-
-# i18n
-CONFIG_LUCI_LANG_zh_Hans=y
-
-CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-wol-zh-cn=y
 
 # ------------------------------------------------
 # Theme
@@ -37,14 +32,10 @@ CONFIG_PACKAGE_luci-app-argon-config=y
 # Message push
 # ------------------------------------------------
 CONFIG_PACKAGE_luci-app-wechatpush=y
-CONFIG_PACKAGE_luci-i18n-wechatpush-zh-cn=y
 CONFIG_PACKAGE_iputils-arping=y
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_jq=y
 CONFIG_PACKAGE_bash=y
-
-# i18n
-CONFIG_PACKAGE_luci-i18n-wechatpush-zh-cn=y
 
 # ------------------------------------------------
 # Utility
@@ -61,11 +52,6 @@ CONFIG_PACKAGE_screen=y
 CONFIG_PACKAGE_rsync=y
 CONFIG_PACKAGE_pv=y
 CONFIG_PACKAGE_tree=y
-CONFIG_PACKAGE_block-mount=y
-
-# i18n
-CONFIG_PACKAGE_luci-i18n-cpufreq-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 
 # ------------------------------------------------
 # Share / Download
@@ -73,14 +59,10 @@ CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 CONFIG_PACKAGE_luci-app-aria2=y
 CONFIG_PACKAGE_luci-app-samba4=y
 CONFIG_DEFAULT_automount=y
-CONFIG_PACKAGE_kmod-fs-cifs=y
 CONFIG_PACKAGE_cifsmount=y
+CONFIG_PACKAGE_kmod-fs-cifs=y
 CONFIG_PACKAGE_kmod-nls-utf8=y
 CONFIG_PACKAGE_luci-app-unblockmusic=y
-
-# i18n
-CONFIG_PACKAGE_luci-i18n-aria2-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
 
 # ------------------------------------------------
 # VPN / Proxy
@@ -102,9 +84,6 @@ CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin=y
 # CONFIG_PACKAGE_shadowsocks-rust-sslocal is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox is not set
 # CONFIG_PACKAGE_sing-box is not set
-
-# i18n
-CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
 
 # ------------------------------------------------
 # Wireless / Driver
@@ -142,11 +121,6 @@ CONFIG_PACKAGE_collectd-mod-disk=y
 CONFIG_PACKAGE_bmon=y
 CONFIG_PACKAGE_iperf3=y
 CONFIG_PACKAGE_luci-app-diag-core=y
-
-# i18n
-CONFIG_PACKAGE_luci-i18n-statistics-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-nlbwmon-zh-cn=y
 
 # ------------------------------------------------
 # UPS
