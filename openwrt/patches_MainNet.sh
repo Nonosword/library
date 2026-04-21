@@ -57,10 +57,19 @@ fi
 
 if [ -f "$NLBW_JSON" ]; then
   sed -i 's#"admin/services/nlbw"#"admin/nlbw/nlbw"#g' "$NLBW_JSON"
+  sed -i 's#"admin/services/nlbw/display"#"admin/nlbw/nlbw/display"#g' "$NLBW_JSON"
+  sed -i 's#"admin/services/nlbw/config"#"admin/nlbw/nlbw/config"#g' "$NLBW_JSON"
+  sed -i 's#"admin/services/nlbw/backup"#"admin/nlbw/nlbw/backup"#g' "$NLBW_JSON"
+  sed -i 's#"path": "admin/services/nlbw/display"#"path": "admin/nlbw/nlbw/display"#g' "$NLBW_JSON"
 fi
 
 if [ -f "$STATUS_JSON" ]; then
   sed -i 's#"admin/status/realtime"#"admin/nlbw/realtime"#g' "$STATUS_JSON"
+  sed -i 's#"admin/status/realtime/load"#"admin/nlbw/realtime/load"#g' "$STATUS_JSON"
+  sed -i 's#"admin/status/realtime/bandwidth"#"admin/nlbw/realtime/bandwidth"#g' "$STATUS_JSON"
+  sed -i 's#"admin/status/realtime/wireless"#"admin/nlbw/realtime/wireless"#g' "$STATUS_JSON"
+  sed -i 's#"admin/status/realtime/connections"#"admin/nlbw/realtime/connections"#g' "$STATUS_JSON"
+  sed -i 's#"path": "admin/status/realtime/load"#"path": "admin/nlbw/realtime/load"#g' "$STATUS_JSON"
 fi
 
 NETDATA_LUA=""
@@ -71,6 +80,7 @@ elif [ -f feeds/small_feeds/packages/luci-app-netdata/luasrc/controller/netdata.
 fi
 
 if [ -n "$NETDATA_LUA" ]; then
+  sed -i '/pidof netdata > \/dev\/null/,+2d' "$NETDATA_LUA"
   sed -i 's#{"admin", "system", "netdata"}#{"admin", "nlbw", "netdata"}#g' "$NETDATA_LUA"
 fi
 
@@ -82,7 +92,16 @@ elif [ -f feeds/small_feeds/packages/luci-app-diskman/luasrc/controller/diskman.
 fi
 
 if [ -n "$DISKMAN_LUA" ]; then
+  sed -i 's#alias("admin", "system", "diskman", "disks")#alias("admin", "nas", "diskman", "disks")#g' "$DISKMAN_LUA"
   sed -i 's#{"admin", "system", "diskman"}#{"admin", "nas", "diskman"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "disks"}#{"admin", "nas", "diskman", "disks"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "partition"}#{"admin", "nas", "diskman", "partition"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "btrfs"}#{"admin", "nas", "diskman", "btrfs"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "format_partition"}#{"admin", "nas", "diskman", "format_partition"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "get_disk_info"}#{"admin", "nas", "diskman", "get_disk_info"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "mk_p_table"}#{"admin", "nas", "diskman", "mk_p_table"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "smartdetail"}#{"admin", "nas", "diskman", "smartdetail"}#g' "$DISKMAN_LUA"
+  sed -i 's#{"admin", "system", "diskman", "smartattr"}#{"admin", "nas", "diskman", "smartattr"}#g' "$DISKMAN_LUA"
 fi
 
 VSFTPD_LUA=""
@@ -114,13 +133,18 @@ if [ -n "$PASSWALL2_LUA" ]; then
 fi
 
 TAILSCALE_JSON=""
-if [ -f package/feeds/packages/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale.json ]; then
-  TAILSCALE_JSON="package/feeds/packages/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale.json"
-elif [ -f package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json ]; then
-  TAILSCALE_JSON="package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json"
-elif [ -f feeds/packages/net/tailscale/files/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json ]; then
-  TAILSCALE_JSON="feeds/packages/net/tailscale/files/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json"
-fi
+for candidate in \
+  package/feeds/packages/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
+  package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json \
+  package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
+  feeds/packages/net/tailscale/files/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json \
+  feeds/packages/net/tailscale/files/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale-community.json
+do
+  if [ -f "$candidate" ]; then
+    TAILSCALE_JSON="$candidate"
+    break
+  fi
+done
 
 if [ -n "$TAILSCALE_JSON" ]; then
   sed -i 's#"admin/services/tailscale"#"admin/vpn/tailscale"#g' "$TAILSCALE_JSON"
