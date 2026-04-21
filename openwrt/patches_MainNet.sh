@@ -132,6 +132,17 @@ if [ -n "$PASSWALL2_LUA" ]; then
   sed -i 's#alias("admin", "services", appname#alias("admin", "vpn", appname#g' "$PASSWALL2_LUA"
 fi
 
+PASSWALL2_API_LUA=""
+if [ -f package/feeds/passwall2/luci-app-passwall2/luasrc/passwall2/api.lua ]; then
+  PASSWALL2_API_LUA="package/feeds/passwall2/luci-app-passwall2/luasrc/passwall2/api.lua"
+elif [ -f feeds/passwall2/luci-app-passwall2/luasrc/passwall2/api.lua ]; then
+  PASSWALL2_API_LUA="feeds/passwall2/luci-app-passwall2/luasrc/passwall2/api.lua"
+fi
+
+if [ -n "$PASSWALL2_API_LUA" ]; then
+  sed -i 's#local url = string.format("admin/services/%s", appname)#local url = string.format("admin/vpn/%s", appname)#g' "$PASSWALL2_API_LUA"
+fi
+
 TAILSCALE_JSON=""
 for candidate in \
   package/feeds/packages/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
