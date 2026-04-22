@@ -145,6 +145,8 @@ fi
 
 TAILSCALE_JSON=""
 for candidate in \
+  feeds/luci/applications/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
+  package/feeds/luci/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
   package/feeds/packages/luci-app-tailscale-community/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
   package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale.json \
   package/feeds/packages/luci-app-tailscale/root/usr/share/luci/menu.d/luci-app-tailscale-community.json \
@@ -160,3 +162,4 @@ done
 if [ -n "$TAILSCALE_JSON" ]; then
   sed -i 's#"admin/services/tailscale"#"admin/vpn/tailscale"#g' "$TAILSCALE_JSON"
 fi
+
